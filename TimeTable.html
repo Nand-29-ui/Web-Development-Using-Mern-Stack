@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aditya University — Class Timetable & Subject Allocation</title>
+  <style>
+    :root {
+      /* Calm, readable palette */
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;   /* blue */
+      --primary-100: #e6efff;
+      --accent: #10b981;    /* teal */
+      --accent-100: #e6fff7;
+      --border: #e5e7eb;
+      --warning: #f59e0b;   /* amber for special rows */
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-100), var(--accent-100));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      margin: 0 0 6px;
+      font-size: 1.6rem;
+    }
+    header p {
+      margin: 4px 0;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 16px rgba(31, 41, 55, 0.06);
+    }
+
+    /* Table styling */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: 0.95rem;
+    }
+    caption {
+      text-align: left;
+      font-weight: 600;
+      color: var(--primary);
+      padding: 8px 0 12px;
+    }
+    thead th {
+      position: sticky;
+      top: 0;
+      background: var(--primary-100);
+      color: var(--text);
+      text-align: left;
+      padding: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    tbody td, tbody th {
+      padding: 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tbody tr:nth-child(even) {
+      background: #fafbff;
+    }
+    tbody tr:hover {
+      background: #f2f6ff;
+    }
+
+    /* Pill badges */
+    .pill {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #1d4ed8;
+      font-weight: 600;
+      border: 1px solid #dbe5ff;
+      white-space: nowrap;
+    }
+
+    /* Footer / note */
+    .note {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Small helpers */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 900px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Aditya University — Class Timetable & Subject Allocation</h1>
+      <p>Aditya Nagar, ADB Road, Surampalem - 533437, Kakinada Dist.</p>
+      <p>Contact: 994987 6662</p>
+    </header>
+
+    <section class="card">
+      <div class="table-wrap">
+        <table aria-label="Weekly class timetable">
+          <caption>Weekly timetable (Monday to Saturday, 09:30 AM – 09:00 PM)</caption>
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>09:30–10:30</th>
+              <th>10:30–11:30</th>
+              <th>11:30–12:30</th>
+              <th>12:30–01:30</th>
+              <th>01:30–02:30</th>
+              <th>02:30–03:30</th>
+              <th>03:30–04:30</th>
+              <th>04:30–05:30</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Monday</th>
+              <td><span class="pill">IRS</span></td>
+              <td><span class="pill">D.M</span></td>
+              <td><span class="pill">ADSAA</span></td>
+              <td><span class="pill">FDS</span></td>
+              <td><span class="pill">ADSAA</span></td>
+              <td><span class="pill">ADSAA</span></td>
+              <td><span class="pill">FDS</span></td>
+              <td><span class="pill" style="background:#fff7ed;color:#b45309;border-color:#fde68a;">—</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Tuesday</th>
+              <td><span class="pill">J.P</span></td>
+              <td><span class="pill">J.P</span></td>
+              <td><span class="pill">DMS</span></td>
+              <td><span class="pill">IRS</span></td>
+              <td><span class="pill">D.M</span></td>
+              <td><span class="pill">FDS</span></td>
+              <td><span class="pill">ADSAA</span></td>
+              <td><span class="pill">E.S-III</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Wednesday</th>
+              <td><span class="pill">D.M</span></td>
+              <td><span class="pill">IRS</span></td>
+              <td><span class="pill">ADSAA</span></td>
+              <td><span class="pill">J.P</span></td>
+              <td><span class="pill">FDS</span></td>
+              <td><span class="pill">WADERMN</span></td>
+              <td><span class="pill">E.S-III</span></td>
+              <td><span class="pill">T.T</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Thursday</th>
+              <td><span class="pill">FDS</span></td>
+              <td><span class="pill">ADSAA</span></td>
+              <td><span class="pill">DMS</span></td>
+              <td><span class="pill">J.P</span></td>
+              <td><span class="pill">IRS</span></td>
+              <td><span class="pill">D.M</span></td>
+              <td><span class="pill">WADERMN</span></td>
+              <td><span class="pill">T.T</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Friday</th>
+              <td><span class="pill">IRS</span></td>
+              <td><span class="pill">WADERMN</span></td>
+              <td><span class="pill">ADSAA</span></td>
+              <td><span class="pill">DMS</span></td>
+              <td><span class="pill">FDS</span></td>
+              <td><span class="pill">J.P</span></td>
+              <td><span class="pill">E.S-III</span></td>
+              <td><span class="pill">T.T</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Saturday</th>
+              <td><span class="pill">T.T</span></td>
+              <td><span class="pill">E.S-III</span></td>
+              <td><span class="pill">WADERMN</span></td>
+              <td><span class="pill">D.M</span></td>
+              <td><span class="pill">J.P</span></td>
+              <td><span class="pill">FDS</span></td>
+              <td><span class="pill">ADSAA</span></td>
+              <td><span class="pill">—</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Note: Update period times or subject distribution as needed.</p>
+    </section>
+
+    <section class="card">
+      <div class="table-wrap">
+        <table aria-label="Allocation of subjects">
+          <caption>Allocation of subjects</caption>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Subject name</th>
+              <th>Faculty</th>
+              <th>Initials</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="pill">DMS</span></td>
+              <td>Discrete Mathematics</td>
+              <td>Dr. Diddi Srinivasa Rao</td>
+              <td>DSR</td>
+            </tr>
+            <tr>
+              <td><span class="pill">D.M</span></td>
+              <td>Data Mining</td>
+              <td>Mommileti Pravallika</td>
+              <td>MP</td>
+            </tr>
+            <tr>
+              <td><span class="pill">J.P</span></td>
+              <td>Java Programming</td>
+              <td>Dr. Maganti Venkatesh; Dr. Ramakrishna Reddy Mule</td>
+              <td>MV; RRM</td>
+            </tr>
+            <tr>
+              <td><span class="pill">ADSAA</span></td>
+              <td>Advanced Data Structures & Algorithm Analysis</td>
+              <td>Venkata Bala Annapurna P</td>
+              <td>VBAP</td>
+            </tr>
+            <tr>
+              <td><span class="pill">FDS</span></td>
+              <td>Fundamentals of Data Science</td>
+              <td>Dr. Nekkanti Rajesh</td>
+              <td>NR</td>
+            </tr>
+            <tr>
+              <td><span class="pill">IRS</span></td>
+              <td>Information Retrieval Systems</td>
+              <td>Kadimi Sowjanya</td>
+              <td>KS</td>
+            </tr>
+            <tr>
+              <td><span class="pill">WADERMN</span></td>
+              <td>Web Application Development using MERN Stack</td>
+              <td>Satti Pravallika</td>
+              <td>SP</td>
+            </tr>
+            <tr>
+              <td><span class="pill">E.S-III</span></td>
+              <td>Employability Skills – III</td>
+              <td>G V Ram Mohan; Satti Pravallika</td>
+              <td>GVRM; SP</td>
+            </tr>
+            <tr>
+              <td><span class="pill">T.T</span></td>
+              <td>Technical Training</td>
+              <td>Dr. Kalidindi Venkateswara Rao</td>
+              <td>KVR</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Use consistent initials per your department’s convention.</p>
+    </section>
+
+    <section class="card">
+      <h2 style="margin:0 0 8px;">Customization tips</h2>
+      <ul>
+        <li><strong>Colors:</strong> Adjust the CSS variables in <code>:root</code> for your theme.</li>
+        <li><strong>Period times:</strong> Edit the table headers in the timetable for your exact slots.</li>
+        <li><strong>Mobile:</strong> Tables are horizontally scrollable; reduce <code>min-width</code> if needed.</li>
+        <li><strong>Badges:</strong> The <code>.pill</code> style keeps codes readable at a glance.</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
